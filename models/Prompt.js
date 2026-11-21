@@ -4,7 +4,10 @@ const promptSchema = new mongoose.Schema({
     title: { type:String, required:true },
     content: { type:String, required:true },
     category : String,
-    createdAt: { type: Date, default: Date.now }
+    owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+    }
 });
 
-module.exports = promptSchema;
+module.exports = mongoose.model('Prompt', promptSchema);
