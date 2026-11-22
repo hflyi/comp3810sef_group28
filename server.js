@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const session = require('cookie-session');
 const app = express();
 
-const uri = 'mongodb://127.0.0.1:27017/promptblog';
+const uri = 'mongodb+srv://s1431249_db_user:admin@cluster0.blqhtub.mongodb.net/';
 mongoose.connect(uri)
     .then(() => console.log('MongoDB connected'))
     .catch((err) => console.log(err));
