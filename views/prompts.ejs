@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prompt Blog System</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 20px auto; padding: 20px; }
+        .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #ccc; padding-bottom: 10px; }
+        .search-bar { margin: 20px 0; padding: 15px; background: #f9f9f9; border-radius: 5px; }
+        .prompt-card { border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 5px; }
+        .prompt-card h3 { margin-top: 0; }
+        .actions { margin-top: 10px; }
+        .actions form { display: inline; }
+        .actions button { padding: 5px 10px; margin-right: 5px; cursor: pointer; }
+        .btn-update { background-color: #ffc107; border: none; }
+        .btn-delete { background-color: #dc3545; color: white; border: none; }
+        .btn-create { background-color: #28a745; color: white; text-decoration: none; padding: 10px 15px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2>Prompt Blog System</h2>
+        <div>
+            Welcome, <strong><%= username %></strong> | <a href="/logout">Logout</a>
+        </div>
+    </div>
+
+    <div style="margin-top: 20px;">
+        <a href="/prompts/create" class="btn-create">+ Create New Prompt</a>
+    </div>
+
+    <!-- Search Form -->
+    <div class="search-bar">
+        <form action="/prompts" method="GET">
+            <label>Search Title:</label>
+            <input type="text" name="title" value="<%= searchTitle %>" placeholder="Enter title...">
+            
+            <label>Category:</label>
+            <input type="text" name="category" value="<%= searchCategory %>" placeholder="Enter category...">
+            
+            <button type="submit">Search</button>
+            <a href="/prompts">Clear</a>
+        </form>
+    </div>
+
+    <!-- Prompt List -->
+    <div id="prompt-list">
+        <% if (prompts.length === 0) { %>
+            <p>No prompts found.</p>
+        <% } else { %>
+            <% prompts.forEach(function(prompt) { %>
+                <div class="prompt-card">
+                    <h3><%= prompt.title %></h3>
+                    <p><strong>Category:</strong> <%= prompt.category || 'Uncategorized' %></p>
+                    <p><%= prompt.content %></p>
+                    
+                    <div class="actions">
+                        <a href="/prompts/update/<%= prompt._id %>"><button class="btn-update">Edit</button></a>
+                        <form action="/prompts/delete/<%= prompt._id %>" method="POST" onsubmit="return confirm('Are you sure you want to delete this prompt?');">
+                            <button type="submit" class="btn-delete">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            <% }); %>
+        <% } %>
+    </div>
+</body>
+</html>
