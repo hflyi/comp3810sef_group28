@@ -7,12 +7,12 @@
 - Group number: 28
 - Members:
   - FANG Xifan, SID: 13562716
-  - Student 2, SID: 13882306
+  - Ng Yin Ting, SID: 13882306
   - Fung Long Yin, SID: 14312497
   - Wong Tin Kam, SID: 13644525
 - Workload division:
   - FANG Xifan: Database design, Mongoose models (User & Prompt), seed data
-  - Member 2: Frontend EJS pages, login/logout, UI layout
+  - Ng Yin Ting: Frontend EJS pages, login/logout, UI layout
   - Fung Long Yin: REST API routes, CURL
   - Wong Tin Kam: Server setup, database connection
 
